@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
-    public function getRouteKeyName()
-    {
-        return 'user_id';
-    }
+    protected $guarded = [];
+
+//    public function getRouteKeyName()
+//    {
+//        return 'user_id';
+//    }
 
     public function question(){
         return $this->belongsTo(Question::class);
