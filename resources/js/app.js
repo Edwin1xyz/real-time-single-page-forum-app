@@ -24,7 +24,7 @@ Vue.use(Vuetify)
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('AppHome', require('./components/AppHome.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,6 +32,9 @@ Vue.use(Vuetify)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import router from './router/router.js'
+
 const app = new Vue({
     el: '#app',
+    router
 });
