@@ -9,6 +9,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 class LikeController extends Controller
 {
+    public function __construct()
+    {
+//        $this->middleware('auth:api', ['except' => ['login','signup']]);
+
+        // JWT middleware can be used instead by changing auth:api to JWT
+
+        $this->middleware('JWT');
+
+    }
+
+
     public function likeIt(Reply $reply){
         $reply->like()->create([
 //            'user_id' => auth()->id,

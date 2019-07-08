@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -13,7 +14,18 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+//        $this->middleware('auth:api', ['except' => ['login','signup']]);
+
+        // JWT middleware can be used instead by changing auth:api to JWT
+
+        $this->middleware('JWT', ['except' => ['login','signup']]);
+
+    }
+
+
+    public function signup(Request $request){
+        User::create($request->all());
+        return $this->login($request);
     }
 
     /**
